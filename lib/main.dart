@@ -6,47 +6,23 @@ void main() {
 
 class MyApp extends StatelessWidget {
   const MyApp({super.key});
-
   // This widget is the root of your application.
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
-      title: 'Flutter Demo',
+      debugShowCheckedModeBanner: false,
+      title: 'Category Browser',
       theme: ThemeData(
-        // This is the theme of your application.
-        //
-        // TRY THIS: Try running your application with "flutter run". You'll see
-        // the application has a purple toolbar. Then, without quitting the app,
-        // try changing the seedColor in the colorScheme below to Colors.green
-        // and then invoke "hot reload" (save your changes or press the "hot
-        // reload" button in a Flutter-supported IDE, or press "r" if you used
-        // the command line to start the app).
-        //
-        // Notice that the counter didn't reset back to zero; the application
-        // state is not lost during the reload. To reset the state, use hot
-        // restart instead.
-        //
-        // This works for code too, not just values: Most code changes can be
-        // tested with just a hot reload.
-        colorScheme: ColorScheme.fromSeed(seedColor: Colors.deepPurple),
+        // colorScheme: ColorScheme.fromSeed(seedColor: Colors.deepPurple),
         useMaterial3: true,
       ),
-      home: const MyHomePage(title: 'CST2335 LAB2 Demo'),
+      home: const MyHomePage(title: 'BROWSE CATEGORIES'),
     );
   }
 }
 
 class MyHomePage extends StatefulWidget {
   const MyHomePage({super.key, required this.title});
-
-  // This widget is the home page of your application. It is stateful, meaning
-  // that it has a State object (defined below) that contains fields that affect
-  // how it looks.
-
-  // This class is the configuration for the state. It holds the values (in this
-  // case the title) provided by the parent (in this case the App widget) and
-  // used by the build method of the State. Fields in a Widget subclass are
-  // always marked "final".
 
   final String title;
 
@@ -55,106 +31,281 @@ class MyHomePage extends StatefulWidget {
 }
 
 class _MyHomePageState extends State<MyHomePage> {
-  // int _counter = 0;
-  final TextEditingController login = TextEditingController();
-  final TextEditingController password = TextEditingController();
-  String imageSource = "images/question-mark.png";
-
-  void _onLoginClick() {
-    setState(() {
-      if (password.text == "QWERTY123") {
-        imageSource = "images/idea.png";
-        // When the user clicks on the login button,
-        // read the string that was typed in the password.
-        // If the string is "QWERTY123",
-        //then change the image source to be a light bulb
-      } else {
-        imageSource = "images/stop.png";
-        // If the string is anything other than "QWERTY123",
-        //then set the image to a stop sign
-      }
-    });
-  }
-
-  // void _incrementCounter() {
-  //   setState(() {
-  //     // This call to setState tells the Flutter framework that something has
-  //     // changed in this State, which causes it to rerun the build method below
-  //     // so that the display can reflect the updated values. If we changed
-  //     // _counter without calling setState(), then the build method would not be
-  //     // called again, and so nothing would appear to happen.
-  //     _counter++;
-  //   });
-  // }
-
   @override
   Widget build(BuildContext context) {
-    // This method is rerun every time setState is called, for instance as done
-    // by the _incrementCounter method above.
-    //
-    // The Flutter framework has been optimized to make rerunning build methods
-    // fast, so that you can just rebuild anything that needs updating rather
-    // than having to individually change instances of widgets.
     return Scaffold(
-      appBar: AppBar(
-        // TRY THIS: Try changing the color here to a specific color (to
-        // Colors.amber, perhaps?) and trigger a hot reload to see the AppBar
-        // change color while the other colors stay the same.
-        backgroundColor: Theme.of(context).colorScheme.inversePrimary,
-        // Here we take the value from the MyHomePage object that was created by
-        // the App.build method, and use it to set our appbar title.
-        title: Text(widget.title),
-      ),
-      body: Center(
-        // Center is a layout widget. It takes a single child and positions it
-        // in the middle of the parent.
-        child: Column(
-          // Column is also a layout widget. It takes a list of children and
-          // arranges them vertically. By default, it sizes itself to fit its
-          // children horizontally, and tries to be as tall as its parent.
-          //
-          // Column has various properties to control how it sizes itself and
-          // how it positions its children. Here we use mainAxisAlignment to
-          // center the children vertically; the main axis here is the vertical
-          // axis because Columns are vertical (the cross axis would be
-          // horizontal).
-          //
-          // TRY THIS: Invoke "debug painting" (choose the "Toggle Debug Paint"
-          // action in the IDE, or press "p" in the console), to see the
-          // wireframe for each widget.
-          mainAxisAlignment: MainAxisAlignment.center,
-          children: <Widget>[
-            TextField(
-              controller: login,
-              decoration: const InputDecoration(
-                  hintText: "Please Enter a user name",
-                  labelText: "Login",
-                  border: OutlineInputBorder()),
-              // is used to add a rectangular border around the input field,
-              //making it easier for users to identify the input area.
+        appBar: AppBar(title: const Text('Browse Categories'), centerTitle: true
+            // backgroundColor: Theme.of(context).colorScheme.inversePrimary,
             ),
-            TextField(
-              controller: password,
-              obscureText:
-                  true, //To make the password field not show what is typed
-              decoration: const InputDecoration(
-                  hintText: "Please type your password", labelText: "Password"),
-            ),
-            ElevatedButton(onPressed: _onLoginClick, child: Text("Login")),
-
-            // Text(
-            //   '$_counter',
-            //   style: Theme.of(context).textTheme.headlineMedium,
-            // ),
-            Image.asset(imageSource, width: 300, height: 300)
-          ],
-        ),
-      ),
-      // floatingActionButton: FloatingActionButton(
-      //   onPressed: _incrementCounter,
-      //   tooltip: 'Increment',
-      //   child: const Icon(Icons.add),
-      // ), // This trailing comma makes auto-formatting nicer for build methods.
-    );
+        body: Center(
+            child: SingleChildScrollView(
+          child: Column(
+              mainAxisAlignment: MainAxisAlignment.spaceBetween,
+              children: [
+                const Text(
+                  "Not sure about exactly which recipe you're looking for? Do a search, or dive into our most popular categories.",
+                  textAlign: TextAlign.center,
+                  style: TextStyle(fontSize: 16),
+                ),
+                const Text(
+                  "BY MEAT",
+                  style: TextStyle(fontWeight: FontWeight.bold, fontSize: 18),
+                ),
+                Row(
+                    mainAxisAlignment: MainAxisAlignment.spaceAround,
+                    children: [
+                      Column(
+                        children: [
+                          Stack(
+                              alignment: AlignmentDirectional.center,
+                              children: [
+                                CircleAvatar(
+                                  backgroundImage:
+                                      AssetImage('images/beef.jpg'),
+                                  radius: 100,
+                                ),
+                                Text("beef",
+                                    style: TextStyle(
+                                      fontSize: 20.0,
+                                      color: Colors.black,
+                                      backgroundColor: Colors.white,
+                                    )),
+                              ])
+                        ],
+                      ),
+                      Column(
+                        children: [
+                          Stack(
+                            alignment: AlignmentDirectional.center,
+                            children: [
+                              CircleAvatar(
+                                backgroundImage:
+                                    AssetImage('images/chicken.jpg'),
+                                radius: 100,
+                              ),
+                              Text("chicken",
+                                  style: TextStyle(
+                                    fontSize: 20.0,
+                                    color: Colors.black,
+                                    backgroundColor: Colors.white,
+                                  )),
+                            ],
+                          ),
+                        ],
+                      ),
+                      Column(
+                        children: [
+                          Stack(
+                            alignment: AlignmentDirectional.center,
+                            children: [
+                              CircleAvatar(
+                                backgroundImage: AssetImage('images/pork.jpg'),
+                                radius: 100,
+                              ),
+                              Text("pork",
+                                  style: TextStyle(
+                                    fontSize: 20.0,
+                                    color: Colors.black,
+                                    backgroundColor: Colors.white,
+                                  )),
+                            ],
+                          )
+                        ],
+                      ),
+                      Column(
+                        children: [
+                          Stack(
+                            alignment: AlignmentDirectional.center,
+                            children: [
+                              CircleAvatar(
+                                backgroundImage:
+                                    AssetImage('images/seafood.jpg'),
+                                radius: 100,
+                              ),
+                              Text("seafood",
+                                  style: TextStyle(
+                                    fontSize: 20.0,
+                                    color: Colors.black,
+                                    backgroundColor: Colors.white,
+                                  )),
+                            ],
+                          )
+                        ],
+                      ),
+                    ]),
+                const Text(
+                  "BY Course",
+                  style: TextStyle(fontWeight: FontWeight.bold, fontSize: 18),
+                ),
+                Row(
+                    mainAxisAlignment: MainAxisAlignment.spaceAround,
+                    children: [
+                      Column(
+                        children: [
+                          Stack(
+                              alignment: AlignmentDirectional.bottomCenter,
+                              children: [
+                                CircleAvatar(
+                                  backgroundImage:
+                                      AssetImage('images/main_dishes.jpg'),
+                                  radius: 100,
+                                ),
+                                Text("Main_Dishes",
+                                    style: TextStyle(
+                                      fontSize: 20.0,
+                                      color: Colors.black,
+                                      backgroundColor: Colors.white,
+                                    )),
+                              ])
+                        ],
+                      ),
+                      Column(
+                        children: [
+                          Stack(
+                            alignment: AlignmentDirectional.bottomCenter,
+                            children: [
+                              CircleAvatar(
+                                backgroundImage:
+                                    AssetImage('images/Side_Dishes.jpg'),
+                                radius: 100,
+                              ),
+                              Text("Side Dishes",
+                                  style: TextStyle(
+                                    fontSize: 20.0,
+                                    color: Colors.black,
+                                    backgroundColor: Colors.white,
+                                  )),
+                            ],
+                          ),
+                        ],
+                      ),
+                      Column(
+                        children: [
+                          Stack(
+                            alignment: AlignmentDirectional.bottomCenter,
+                            children: [
+                              CircleAvatar(
+                                backgroundImage: AssetImage('images/salad.jpg'),
+                                radius: 100,
+                              ),
+                              Text("Salad",
+                                  style: TextStyle(
+                                    fontSize: 20.0,
+                                    color: Colors.black,
+                                    backgroundColor: Colors.white,
+                                  )),
+                            ],
+                          )
+                        ],
+                      ),
+                      Column(
+                        children: [
+                          Stack(
+                            alignment: AlignmentDirectional.bottomCenter,
+                            children: [
+                              CircleAvatar(
+                                backgroundImage:
+                                    AssetImage('images/crockpot.jpg'),
+                                radius: 100,
+                              ),
+                              Text("Crock Pot",
+                                  style: TextStyle(
+                                    fontSize: 20.0,
+                                    color: Colors.black,
+                                    backgroundColor: Colors.white,
+                                  )),
+                            ],
+                          )
+                        ],
+                      ),
+                    ]),
+                const Text(
+                  "BY Dessert",
+                  style: TextStyle(fontWeight: FontWeight.bold, fontSize: 18),
+                ),
+                Row(
+                    mainAxisAlignment: MainAxisAlignment.spaceAround,
+                    children: [
+                      Column(
+                        children: [
+                          Stack(
+                              alignment: AlignmentDirectional.bottomCenter,
+                              children: [
+                                CircleAvatar(
+                                  backgroundImage:
+                                      AssetImage('images/icecream.jpg'),
+                                  radius: 100,
+                                ),
+                                Text("Ice Cream",
+                                    style: TextStyle(
+                                      fontSize: 20.0,
+                                      color: Colors.black,
+                                      backgroundColor: Colors.white,
+                                    )),
+                              ])
+                        ],
+                      ),
+                      Column(
+                        children: [
+                          Stack(
+                            alignment: AlignmentDirectional.bottomCenter,
+                            children: [
+                              CircleAvatar(
+                                backgroundImage:
+                                    AssetImage('images/brownies.jpg'),
+                                radius: 100,
+                              ),
+                              Text("Brownies",
+                                  style: TextStyle(
+                                    fontSize: 20.0,
+                                    color: Colors.black,
+                                    backgroundColor: Colors.white,
+                                  )),
+                            ],
+                          ),
+                        ],
+                      ),
+                      Column(
+                        children: [
+                          Stack(
+                            alignment: AlignmentDirectional.bottomCenter,
+                            children: [
+                              CircleAvatar(
+                                backgroundImage: AssetImage('images/pies.jpg'),
+                                radius: 100,
+                              ),
+                              Text("Pies",
+                                  style: TextStyle(
+                                    fontSize: 20.0,
+                                    color: Colors.black,
+                                    backgroundColor: Colors.white,
+                                  )),
+                            ],
+                          )
+                        ],
+                      ),
+                      Column(
+                        children: [
+                          Stack(
+                            alignment: AlignmentDirectional.bottomCenter,
+                            children: [
+                              CircleAvatar(
+                                backgroundImage:
+                                    AssetImage('images/cookies.jpg'),
+                                radius: 100,
+                              ),
+                              Text("Cookies",
+                                  style: TextStyle(
+                                    fontSize: 20.0,
+                                    color: Colors.black,
+                                    backgroundColor: Colors.white,
+                                  )),
+                            ],
+                          )
+                        ],
+                      ),
+                    ]),
+              ]),
+        )));
   }
 }
