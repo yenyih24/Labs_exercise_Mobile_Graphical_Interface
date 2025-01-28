@@ -1,6 +1,6 @@
-# my_cst2335_lab2
+# my_labs
 
-A new Flutter project.
+It is all my Flutter project.
 
 ## Getting Started
 
